@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    body {
+      height: 20px; /* Para demonstrar a diferença entre clientX/Y e pageX/Y */
+    }
+    #position {
+      display: flex;
+      position: relative;
+      height: auto;
+      width: fit-content;
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+  <body>
+    <div id="position">Move the mouse</div>
+    <div id="player">
+      <audio src="sounds/Crescer e Aceitar guitar.mp3" class="sound" id="a1">
+        vocal
+      </audio>
+      <audio src="sounds/Crescer e Aceitar.mp3" class="sound" id="a2">
+        instrumental
+      </audio>
+
+      <button id="btnPlay" onclick="soundPlay()">Play</button>
+      <button id="btnVocal" onclick="soundVocal()">No Guitar 🎸</button>
+      <button id="btnStop" onclick="soundStop()">Stop</button>
+    </div>
+
+    <script>
+      let squad = document.querySelector("#position");
+
+      document.addEventListener("mousemove", function (event) {
+        var x = event.clientX;
+        var y = event.clientY;
+        var pageX = event.pageX;
+        var pageY = event.pageY;
+
+        var positionDiv = document.getElementById("position");
+        positionDiv.textContent =
+          "Client X/Y: " +
+          x +
+          ", " +
+          y +
+          " | Page X/Y: " +
+          pageX +
+          ", " +
+          pageY;
+
+        squad.style.left = `${x}px`;
+        squad.style.top = `${y}px`;
+      });
+
+      let s1 = document.querySelector("#a1");
+      let s2 = document.querySelector("#a2");
+      let btnPlay = document.querySelector("#btnPlay");
+      let btnVocal = document.querySelector("#btnVocal");
+
+      function soundPlay() {
+        if (s1.paused && s2.paused) {
+          s1.play();
+          s2.play();
+        } else {
+          s1.pause();
+          s2.pause();
+        }
+
+        btnPlay.textContent = btnPlay.textContent == "Play" ? "Pause" : "Play";
+      }
+
+      function soundVocal() {
+        if (!s1.muted) {
+          s1.muted = true;
+          btnVocal.innerHTML = "Guitarras";
+        } else {
+          s1.muted = false;
+          btnVocal.innerHTML = "No Guitar 🎸";
+        }
+      }
+
+      function soundStop() {
+        s1.pause();
+        s1.currentTime = 0;
+        s2.pause();
+        s2.currentTime = 0;
+        btnPlay.textContent = "Play";
+        
+      }
+
+    </script>
+  </body>
+</html>
