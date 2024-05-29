@@ -16,17 +16,7 @@
     body {
       /* Para demonstrar a diferença entre clientX/Y e pageX/Y */
     }
-    #position {
-      display: flex;
-      position: relative;
-      height: auto;
-      width: fit-content;
-      background: #333;
-      color: #fff;
-      padding: 10px;
-      font-family: Arial, sans-serif;
-    }
-
+  
     #player {
       display: flex;
       flex-direction: column;
@@ -51,7 +41,20 @@
       top: 50px;
       left: 100px;
       background-color: rgb(27, 248, 75);
-      animation: teste 3s infinite  ;
+      animation: teste 1.5s infinite linear ;
+      
+    }
+
+    .ball_2 {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      border-radius: 50%;
+      bottom: 50px;
+      left: 100px;
+      background-color: rgb(27, 42, 248);
+      cursor: pointer;
+      
       
     }
 
@@ -67,6 +70,7 @@
   </style>
   <body>
     <div class="ball"></div>
+    <div class="ball_2"></div>
     <!-- <div id="position">Move the mouse</div>-->
     <div id="player">
       <audio src="sounds/Crescer e Aceitar guitar.mp3" class="sound" id="a1">
@@ -88,28 +92,8 @@
     </div>
 
     <script>
-      let squad = document.querySelector("#position");
-
-      document.addEventListener("mousemove", function (event) {
-        var x = event.clientX;
-        var y = event.clientY;
-        var pageX = event.pageX;
-        var pageY = event.pageY;
-
-        var positionDiv = document.getElementById("position");
-        positionDiv.textContent =
-          "Client X/Y: " +
-          x +
-          ", " +
-          y +
-          " | Page X/Y: " +
-          pageX +
-          ", " +
-          pageY;
-
-        squad.style.left = `${x}px`;
-        squad.style.top = `${y}px`;
-      });
+      
+      let ball = document.querySelector(".ball");     
 
       let s1 = document.querySelector("#a1");
       let s2 = document.querySelector("#a2");
