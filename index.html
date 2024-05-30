@@ -32,20 +32,20 @@
     }
 
     .ball {
-      width: 50px;
-      height: 50px;
+      width: 100px;
+      height: 100px;
       position: absolute;
       border-radius: 50%;
       top: 50px;
       left: 100px;
       background-color: rgb(27, 248, 75);
-      animation: teste 2s infinite linear ;
+      animation: teste 1.5s infinite linear ;
       
     }
 
     .ball_2 {
-      width: 50px;
-      height: 50px;
+      width: 100px;
+      height: 100px;
       position: absolute;
       border-radius: 50%;
       bottom: 50px;
@@ -147,11 +147,17 @@
        if(top <= top2+100 && top >=top2-100){
         console.log('entrou');
         sucess = true;
+        console.log(sucess)
+        s1.muted = false;
         
 
        }else{
         sucess = false;
+        console.log(sucess)
+        s1.muted = true;
        }
+
+       
       }
     </script>
   </body>
