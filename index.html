@@ -51,9 +51,14 @@
       bottom: 50px;
       left: 100px;
       background-color: rgb(27, 42, 248);
-      cursor: pointer;
+      border: none;
+   
       
       
+    }
+
+    #btnVocal{
+      display: none;
     }
 
     @keyframes teste {
@@ -68,7 +73,7 @@
   </style>
   <body>
     <div class="ball"></div>
-    <div class="ball_2" onclick="teste()"></div>
+    <button class="ball_2" onclick="teste()"></button>
     <!-- <div id="position">Move the mouse</div>-->
     <div id="player">
       <audio src="sounds/Crescer e Aceitar guitar.mp3" class="sound" id="a1">
@@ -103,12 +108,14 @@
         if (s1.paused && s2.paused) {
           s1.play();
           s2.play();
+          btnPlay.innerHTML = "Pause";
         } else {
           s1.pause();
           s2.pause();
+          btnPlay.innerHTML = "Play";
         }
 
-        btnPlay.textContent = btnPlay.textContent == "Play" ? "Pause" : "Play";
+     
       }
 
       function soundVocal() {
