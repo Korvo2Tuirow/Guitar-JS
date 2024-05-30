@@ -13,9 +13,7 @@
       box-sizing: border-box;
     overflow: hidden;
     }
-    body {
-      /* Para demonstrar a diferença entre clientX/Y e pageX/Y */
-    }
+  
   
     #player {
       display: flex;
@@ -41,7 +39,7 @@
       top: 50px;
       left: 100px;
       background-color: rgb(27, 248, 75);
-      animation: teste 1.5s infinite linear ;
+      animation: teste 2s infinite linear ;
       
     }
 
@@ -70,7 +68,7 @@
   </style>
   <body>
     <div class="ball"></div>
-    <div class="ball_2"></div>
+    <div class="ball_2" onclick="teste()"></div>
     <!-- <div id="position">Move the mouse</div>-->
     <div id="player">
       <audio src="sounds/Crescer e Aceitar guitar.mp3" class="sound" id="a1">
@@ -93,7 +91,8 @@
 
     <script>
       
-      let ball = document.querySelector(".ball");     
+      let ball = document.querySelector(".ball");
+      let ball_2 = document.querySelector(".ball_2");     
 
       let s1 = document.querySelector("#a1");
       let s2 = document.querySelector("#a2");
@@ -128,6 +127,31 @@
         s2.pause();
         s2.currentTime = 0;
         btnPlay.textContent = "Play";
+      }
+
+      function teste(){
+       let loc = ball.getBoundingClientRect();
+       let loc2 = ball_2.getBoundingClientRect();
+       let sucess = true;
+       
+
+       var top = Math.round(loc.top);      
+       var bottom = Math.round(loc.bottom);
+
+       var top2 = Math.round(loc2.top);      
+       var bottom2 = Math.round(loc2.bottom);
+
+       console.log('Top:', top,  'Bottom:', bottom);
+       console.log('Top2:', top2 +100,  'Bottom2:', bottom2);
+       
+       if(top <= top2+100 && top >=top2-100){
+        console.log('entrou');
+        sucess = true;
+        
+
+       }else{
+        sucess = false;
+       }
       }
     </script>
   </body>
