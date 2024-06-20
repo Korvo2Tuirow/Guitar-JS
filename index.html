@@ -73,7 +73,7 @@
   </style>
   <body>
     <div class="ball"></div>
-    <button class="ball_2" onclick="teste()"></button>
+    <button class="ball_2" onclick="teste()" ></button>
     <!-- <div id="position">Move the mouse</div>-->
     <div id="player">
       <audio src="sounds/Crescer e Aceitar guitar.mp3" class="sound" id="a1">
@@ -163,6 +163,8 @@
         console.log(sucess)
         s1.muted = true;
        }
+
+       ball_2.addEventListener("touchStart", teste());
 
        
       }
